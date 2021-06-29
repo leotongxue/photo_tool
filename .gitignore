@@ -1,0 +1,11 @@
+data
+.idea/
+.DS_Store
+head_images.zip
+xllz.zip
+*.mp4
+A
+B
+VehicleInfo.txt
+__pycache__
+utils/postgpu.py
