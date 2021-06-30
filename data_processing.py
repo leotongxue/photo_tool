@@ -16,54 +16,54 @@ if __name__ == '__main__':
     log_path = './logs'
     log_name = 'datasum.log'
     files = [XML_PATH, IMAGES_PATH]
-    # old_xml = 'ty_old'
-    # new_xml = 'ty_new'
-
-    # old_xml = 'anqing_old'
-    # new_xml = 'anqing_new'
-
-    # old_xml = 'yatong_old'
-    # new_xml = 'yatong_new'
-
-    # old_xml = 'jimi_old'
-    # new_xml = 'jimi_new'
-
-    # old_xml = 'yatong_old'
-    # new_xml = 'yatong_new'
-
-    # old_xml = 'menglong_old'
-    # new_xml = 'menglong_new'
-
-    # old_xml = 'hengshida_old'
-    # new_xml = 'hengshida_new'
-
+    # # old_xml = 'ty_old'
+    # # new_xml = 'ty_new'
+    #
+    # # old_xml = 'anqing_old'
+    # # new_xml = 'anqing_new'
+    #
+    # # old_xml = 'yatong_old'
+    # # new_xml = 'yatong_new'
+    #
+    # # old_xml = 'jimi_old'
+    # # new_xml = 'jimi_new'
+    #
+    # # old_xml = 'yatong_old'
+    # # new_xml = 'yatong_new'
+    #
+    # # old_xml = 'menglong_old'
+    # # new_xml = 'menglong_new'
+    #
+    # # old_xml = 'hengshida_old'
+    # # new_xml = 'hengshida_new'
+    #
+    # # old_xml = 'mianbao_old'
+    # # new_xml = 'mianbao_new'
+    #
     # old_xml = 'mianbao_old'
     # new_xml = 'mianbao_new'
-
-    old_xml = 'mianbao_old'
-    new_xml = 'mianbao_new'
-
-    # 删除小圆点 或者 没有标注的
-    load_dataset(ANNOTATIONS_PATH)
-    print('----------------------------------删除小圆点完成---------------------------------')
-
-    # 删去两个文件夹不对应的图片
-    compare(ANNOTATIONS_PATH, IMAGES_PATH)
-    compare(IMAGES_PATH, ANNOTATIONS_PATH)
-    print('----------------------------------删去两个文件夹不对应的图片完成----------------------------------')
-
-    # xml改标签名
-    renamexml(ANNOTATIONS_PATH, XML_PATH, old_xml, new_xml)
-    print('----------------------------------xml改标签名完成----------------------------------')
-
-    # 对应文件修改名字
-    rename(IMAGES_PATH, XML_PATH, newname)
-    print('----------------------------------对应文件修改名字完成----------------------------------')
-
-    # 检查名字
-    print(checkname(ANNOTATIONS_PATH))
-    print(checkname(XML_PATH))
-    print('----------------------------------xml检查名字完成----------------------------------')
+    #
+    # # 删除小圆点 或者 没有标注的
+    # load_dataset(ANNOTATIONS_PATH)
+    # print('----------------------------------删除小圆点完成---------------------------------')
+    #
+    # # 删去两个文件夹不对应的图片
+    # compare(ANNOTATIONS_PATH, IMAGES_PATH)
+    # compare(IMAGES_PATH, ANNOTATIONS_PATH)
+    # print('----------------------------------删去两个文件夹不对应的图片完成----------------------------------')
+    #
+    # # xml改标签名
+    # renamexml(ANNOTATIONS_PATH, XML_PATH, old_xml, new_xml)
+    # print('----------------------------------xml改标签名完成----------------------------------')
+    #
+    # # 对应文件修改名字
+    # rename(IMAGES_PATH, XML_PATH, newname)
+    # print('----------------------------------对应文件修改名字完成----------------------------------')
+    #
+    # # 检查名字
+    # print(checkname(ANNOTATIONS_PATH))
+    # print(checkname(XML_PATH))
+    # print('----------------------------------xml检查名字完成----------------------------------')
 
     # 日志
     xml_sum = os.listdir(XML_PATH)
@@ -74,10 +74,10 @@ if __name__ == '__main__':
     body = newname[:-1] + ' ' + str(num)
     logger = setup_log(log_path, log_name)
     logger.info(body)
-    print('----------------------------files------统计数量日志完成----------------------------------')
+    print('----------------------------统计数量日志完成----------------------------------')
 
-    # # 压缩文件
-    # out_name = newname[:-1] + '.zip'
-    # print(out_name)
-    # compress_attaches(files, out_name)
-    # print('----------------------------------压缩文件完成----------------------------------')
+    # 压缩文件
+    out_name = newname[:-1] + '.zip'
+    print(out_name)
+    compress_attaches(files, out_name)
+    print('----------------------------------压缩文件完成----------------------------------')
