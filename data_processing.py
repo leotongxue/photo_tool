@@ -3,6 +3,9 @@ from utils.check_area_0 import load_dataset
 from utils.renamexml import renamexml
 from utils.file_rename import rename
 from utils.check_name import checkname
+from utils.file_logs import setup_log
+from utils.zip_file import compress_attaches
+import os
 
 if __name__ == '__main__':
     # xml 和 图片路径
@@ -10,6 +13,9 @@ if __name__ == '__main__':
     IMAGES_PATH = "./data/images"
     XML_PATH = "./data/xml"  # 修改Annotations后形成的txt目录
     newname = 'bread_mix1_5_main1_'
+    log_path = './logs'
+    log_name = 'datasum.log'
+    files = [XML_PATH, IMAGES_PATH]
     # old_xml = 'ty_old'
     # new_xml = 'ty_new'
 
@@ -41,12 +47,12 @@ if __name__ == '__main__':
     load_dataset(ANNOTATIONS_PATH)
     print('----------------------------------删除小圆点完成---------------------------------')
 
-    #删去两个文件夹不对应的图片
+    # 删去两个文件夹不对应的图片
     compare(ANNOTATIONS_PATH, IMAGES_PATH)
     compare(IMAGES_PATH, ANNOTATIONS_PATH)
     print('----------------------------------删去两个文件夹不对应的图片完成----------------------------------')
 
-    #xml改标签名
+    # xml改标签名
     renamexml(ANNOTATIONS_PATH, XML_PATH, old_xml, new_xml)
     print('----------------------------------xml改标签名完成----------------------------------')
 
@@ -59,3 +65,19 @@ if __name__ == '__main__':
     print(checkname(XML_PATH))
     print('----------------------------------xml检查名字完成----------------------------------')
 
+    # 日志
+    xml_sum = os.listdir(XML_PATH)
+    num = 0
+    for i in xml_sum:
+        if i[-3:] == 'xml':
+            num += 1
+    body = newname[:-1] + ' ' + str(num)
+    logger = setup_log(log_path, log_name)
+    logger.info(body)
+    print('----------------------------files------统计数量日志完成----------------------------------')
+
+    # # 压缩文件
+    # out_name = newname[:-1] + '.zip'
+    # print(out_name)
+    # compress_attaches(files, out_name)
+    # print('----------------------------------压缩文件完成----------------------------------')
