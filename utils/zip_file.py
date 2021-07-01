@@ -2,12 +2,15 @@ import zipfile
 import os
 
 
-def compress_attaches(files, out_name):
-    zip = zipfile.ZipFile(out_name, "w", zipfile.ZIP_DEFLATED)
+def compress_attaches(files, out_path):
+    zip = zipfile.ZipFile(out_path, "w", zipfile.ZIP_DEFLATED)
     for dirpath in files:
         for path, dirnames, filenames in os.walk(dirpath):
             # 去掉目标跟路径，只对目标文件夹下边的文件及文件夹进行压缩
             for filename in filenames:
-                fpath = dirpath.replace('data', out_name.split('.')[0])
-                zip.write(os.path.join(path, filename), os.path.join(fpath, filename))
+                if filename != '.DS_Store':
+                    # fpath压缩文件路径 (压缩文件的里面的文件层数和fpath保持一致)
+                    fpath = path.replace('data/zip_data/', '')
+                    # print(fpath)
+                    zip.write(os.path.join(path, filename), os.path.join(fpath, filename))
     zip.close()

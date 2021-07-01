@@ -1,5 +1,7 @@
 data
 logs
+pending_data
+zip_data
 .idea/
 .DS_Store
 head_images.zip

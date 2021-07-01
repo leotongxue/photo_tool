@@ -15,16 +15,17 @@ def renamexml(dirpath, newdir, old_xml, new_xml, yaml='./data/xml_annotations.ya
 
     if len(old) == len(new):
         for fp in os.listdir(dirpath):
-            with open(os.path.join(dirpath, fp), "r")as f:
-                print(fp)
-                txt = f.read()
-                # print(txt)
-                for i in range(len(old)):
-                    # print(old[i])
-                    # txt = txt.replace(f"<name>{old[i]}\n</name>", f"<name>{new[i]}</name>")
-                    txt = txt.replace(f"<name>{old[i]}</name>", f"<name>{new[i]}</name>")
-                with open(os.path.join(newdir, fp), "w")as ff:
-                    ff.write(txt)
+            if fp != '.DS_Store':
+                with open(os.path.join(dirpath, fp), "r")as f:
+                    #print(fp)
+                    txt = f.read()
+                    # print(txt)
+                    for i in range(len(old)):
+                        # print(old[i])
+                        # txt = txt.replace(f"<name>{old[i]}\n</name>", f"<name>{new[i]}</name>")
+                        txt = txt.replace(f"<name>{old[i]}</name>", f"<name>{new[i]}</name>")
+                    with open(os.path.join(newdir, fp), "w")as ff:
+                        ff.write(txt)
 
 
 if __name__ == '__main__':
