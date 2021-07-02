@@ -4,29 +4,31 @@
 ```
 |-- data
     |-- pending_data
-        |-- A(图片)
-            |-- 1.jpg
-            |-- 2.jpg
-            |-- ...
-        |-- A_xml(xml文件)
-            |-- 1.xml
-            |-- 2.xml
-            |-- ...
-        |-- B(图片)
-            |-- 1.jpg
-            |-- 2.jpg
-            |-- ...
-        |-- B_xml(xml文件)
-            |-- 1.xml
-            |-- 2.xml
-            |-- ...
+        |-- AAAA
+            |-- A(图片)
+                |-- 1.jpg
+                |-- 2.jpg
+                |-- ...
+            |-- A_xml(xml文件)
+                |-- 1.xml
+                |-- 2.xml
+                |-- ...
+        |-- BBBB
+            |-- B(图片)
+                |-- 1.jpg
+                |-- 2.jpg
+                |-- ...
+            |-- B_xml(xml文件)
+                |-- 1.xml
+                |-- 2.xml
+                |-- ...
     |-- Video
         |-- kele
             |-- 863_20360_main_10.mp4
             |-- 863_20360_sub_10.mp4
         |-- 1.mp4
         |-- 1.h264
-    |-- zip_data
+    |-- zip_data(生成压缩文件)
     |-- xml_annotations.yaml(内容如下：)
             error_old: ['bread1']
             error_new: ['nrtzdg']
