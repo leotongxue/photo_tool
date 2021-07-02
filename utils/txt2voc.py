@@ -9,18 +9,28 @@ src_img_dir = "../data/images"
 # VEDAI 图像的 ground truth 的 txt 文件存放位置
 src_txt_dir = "../data/txt"
 src_xml_dir = "../data/xml"
+src_name_dir = "../data/txt/classes.txt"
 
 if not os.path.exists(src_xml_dir):
     os.makedirs(src_xml_dir)
 
-name = ['tylv']
+
+def get_classes(classes_path):
+    with open(classes_path) as f:
+        class_names = f.readlines()
+    class_names = [c.strip() for c in class_names]
+    return class_names
+
+
+name = get_classes(src_name_dir)
+
 img_Lists = glob.glob(src_img_dir + '/*.jpg')
 
-img_basenames = []  # e.g. 100.jpg
+img_basenames = []
 for item in img_Lists:
     img_basenames.append(os.path.basename(item))
 
-img_names = []  # e.g. 100
+img_names = []
 for item in img_basenames:
     temp1, temp2 = os.path.splitext(item)
     img_names.append(temp1)
@@ -69,7 +79,6 @@ for img in img_names:
 
         xml_file.write('</annotation>')
 
-    #     print(src_txt_dir + '/' + img + '.txt')
-        print(111)
+        print(src_txt_dir + '/' + img + '.txt')
     else:
         continue
