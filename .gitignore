@@ -2,6 +2,7 @@ data
 logs
 pending_data
 zip_data
+BITVehicle_Dataset
 .idea/
 .DS_Store
 head_images.zip

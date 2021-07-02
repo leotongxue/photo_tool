@@ -119,8 +119,8 @@ if __name__ == '__main__':
                 print('----------------------------------对应文件修改名字完成----------------------------------')
 
                 # 检查名字
-                print(checkname(ANNOTATIONS_PATH))
-                print(checkname(XML_PATH))
+                ANNOTATIONS_NAME = checkname(ANNOTATIONS_PATH)
+                XML_NAME = checkname(XML_PATH)
                 print('----------------------------------xml检查名字完成----------------------------------')
 
                 # 日志
@@ -130,7 +130,7 @@ if __name__ == '__main__':
                 for i in xml_sum:
                     if i[-3:] == 'xml':
                         num += 1
-                body = newname[:-1] + ' ' + str(num)
+                body = newname[:-1] + ' ' + str(num) + ' ' + ANNOTATIONS_NAME + ' ' + XML_NAME
                 logger.info(body)
                 print('----------------------------统计数量日志完成----------------------------------')
 
