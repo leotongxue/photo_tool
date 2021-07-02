@@ -5,11 +5,15 @@ import glob
 from PIL import Image
 
 # VEDAI 图像存储位置
-src_img_dir = "/Users/leo/Desktop/photo_tools/data/jimi_tylv1/images"
+src_img_dir = "../data/images"
 # VEDAI 图像的 ground truth 的 txt 文件存放位置
-src_txt_dir = "/Users/leo/Desktop/photo_tools/data/jimi_tylv1/txt"
-src_xml_dir = "/Users/leo/Desktop/photo_tools/data/jimi_tylv1/xml"
-name = ['tylv', 'tylv', 'tylv', 'tylv', 'lvcha', 'lvcha']
+src_txt_dir = "../data/txt"
+src_xml_dir = "../data/xml"
+
+if not os.path.exists(src_xml_dir):
+    os.makedirs(src_xml_dir)
+
+name = ['tylv']
 img_Lists = glob.glob(src_img_dir + '/*.jpg')
 
 img_basenames = []  # e.g. 100.jpg
@@ -46,20 +50,20 @@ for img in img_names:
         for img_each_label in gt:
 
             spt = img_each_label.split(' ')  # 这里如果txt里面是以逗号‘，’隔开的，那么就改为spt = img_each_label.split(',')。
-            x = float(spt[1]) * width
-            y = float(spt[2]) * width
-            w = float(spt[3]) * height
-            h = float(spt[4]) * height
+            x = round(float(spt[1]) * width)
+            y = round(float(spt[2]) * height)
+            w = round(float(spt[3]) * width)
+            h = round(float(spt[4]) * height)
             xml_file.write('    <object>\n')
             xml_file.write('        <name>' + str(name[int(spt[0])]) + '</name>\n')
             xml_file.write('        <pose>Unspecified</pose>\n')
             xml_file.write('        <truncated>0</truncated>\n')
             xml_file.write('        <difficult>0</difficult>\n')
             xml_file.write('        <bndbox>\n')
-            xml_file.write('            <xmin>' + str(x+1-w/2) + '</xmin>\n')
-            xml_file.write('            <ymin>' + str(y+1-h/2) + '</ymin>\n')
-            xml_file.write('            <xmax>' + str(x+1+w/2) + '</xmax>\n')
-            xml_file.write('            <ymax>' + str(y+1+h/2) + '</ymax>\n')
+            xml_file.write('            <xmin>' + str(x-1-w/2) + '</xmin>\n')
+            xml_file.write('            <ymin>' + str(y-1-h/2) + '</ymin>\n')
+            xml_file.write('            <xmax>' + str(x-1+w/2) + '</xmax>\n')
+            xml_file.write('            <ymax>' + str(y-1+h/2) + '</ymax>\n')
             xml_file.write('        </bndbox>\n')
             xml_file.write('    </object>\n')
 

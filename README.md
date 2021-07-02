@@ -30,6 +30,7 @@
     |-- xml_annotations.yaml(内容如下：)
             error_old: ['bread1']
             error_new: ['nrtzdg']
+    |-- txt (yolo格式 x,y,w,h)
 ```
 ### 2.运行data_processing.py
 
@@ -43,7 +44,7 @@
 #### remove_file 批量移动文件
 #### renamexml 更换xml标签
 #### sum_num 统计框数
-#### txt2voc yolo转voc有问题
+#### txt2voc yolo转voc
 #### zip_file 压缩文件
 
 ### 2.DealWithVideo视频处理包
